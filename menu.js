@@ -21,10 +21,6 @@ module.exports = {
                 event: 'theme'
             },
             {
-                label: 'Toggle animation',
-                event: 'toggle-animation'
-            },
-            {
                 label: 'Offline',
                 accelerator: 'Cmd+Shift+O',
                 event: 'offline'

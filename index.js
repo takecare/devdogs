@@ -5,7 +5,6 @@ const path = require('path');
 const electron = require('electron');
 const configStore = require('configstore');
 const globalShortcut = require('electron-shortcut');
-const togglify = require('electron-togglify-window');
 const windowStateKeeper = require('electron-window-state');
 const pkg = require('./package.json');
 
@@ -94,11 +93,5 @@ app.on('browser-window-blur', () => {
 });
 
 app.on('menuitem-click', e => {
-	if (e.event === 'toggle-animation') {
-		const animation = conf.get('animation') === 'hide' ? 'scale' : 'hide';
-		conf.set('animation', animation);
-		togglify.changeAnimation(window, animation);
-	} else {
-		BrowserWindow.getFocusedWindow().webContents.send(e.event);
-	}
+	BrowserWindow.getFocusedWindow().webContents.send(e.event);
 });
