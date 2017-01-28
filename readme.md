@@ -6,7 +6,7 @@
 
 ## Install
 
-Only support OS X, requires OS X 10.8 or newer. [Download](https://github.com/ragingwind/devdogs/releases/latest), unzip, copy and run wherever you want
+Only supports OS X, requires OS X 10.8 or newer. [Download](https://github.com/ragingwind/devdogs/releases/latest), unzip, copy and run wherever you want
 
 ## Features something different
 

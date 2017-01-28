@@ -20,7 +20,7 @@
     "version": "--app-bundle-id=me.ragingwind.devdocs"
   },
   "scripts": {
-    "start": "electron ./",
+    "start": "electron --debug=5858 ./",
     "test": "xo",
     "clean": "rm -rf build package",
     "build": "electron-packager . $npm_package_productName --out=./dist --overwrite --app-version=$npm_package_version $npm_package_config_platform $npm_package_config_version $npm_package_config_ignore",
