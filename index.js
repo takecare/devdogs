@@ -2,27 +2,21 @@
 
 const fs = require('fs');
 const path = require('path');
-const electron = require('electron');
-const configStore = require('configstore');
+const {app, BrowserWindow, shell, Menu, crashReporter} = require('electron');
 const globalShortcut = require('electron-shortcut');
 const windowStateKeeper = require('electron-window-state');
 const pkg = require('./package.json');
 
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-const shell = electron.shell;
-const conf = new configStore(pkg.name, {animation: 'scale'});
+const template = require('./template');
+const appMenu = Menu.buildFromTemplate(template);
 
 if (process.env.NODE_ENV !== 'production') {
-	const crashReporter = electron.crashReporter;
 	crashReporter.start({
 		companyName: pkg.author.name,
 		submitURL: pkg.repository
 	});
 	require('electron-debug')();
 }
-
-require('electron-menu-loader')('./menu');
 
 // prevent window being GC'd
 let window = null;
@@ -32,6 +26,8 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
+
+	Menu.setApplicationMenu(appMenu);
 
 	const mainWindowState = windowStateKeeper({
 		defaultWidth: 800,
@@ -78,13 +74,11 @@ app.on('ready', () => {
 		autoRegister: false,
 		cmdOrCtrl: false
 	}, () => {
-
 		if (window.isVisible() && window.isFocused()) {
 			app.hide();
 		} else {
 			app.focus();
 		}
-
 	});
 });
 

@@ -45,11 +45,8 @@
     "xo": "^0.17.1"
   },
   "dependencies": {
-    "configstore": "^2.1.0",
     "electron-debug": "^1.1.0",
-    "electron-menu-loader": "1.0.0",
     "electron-shortcut": "^0.5.0",
-    "electron-togglify-window": "^0.1.0",
     "electron-window-state": "^4.0.0"
   },
   "xo": {
